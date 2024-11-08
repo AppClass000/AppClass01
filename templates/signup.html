@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container"> 
+        <h1>AppClassに登録</h1>
+        <form method="post" class="selectinfo">
+            <label for="user_id">学籍番号を入力</label>
+            <input type="text" name="user_id">
+            <label for="password">パスワードを入力</label>
+            <input type="password" name="password">
+            <button type="submit">登録</button>
+        </form>
+    {% if user %}
+       <h1>{{ msg }}</h1>
+    {% endif %} 
+</div>
+{% endblock %}

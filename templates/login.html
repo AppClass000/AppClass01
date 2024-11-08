@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+    <h1>AppClassにログイン</h1>
+    <form method="post" clas="selectinfo">
+        <label for="user_id">学籍番号を入力</label>
+        <input type="text" name="user_id">
+        <label for="password">パスワードを入力</label>
+        <input type="password" name="password">
+        <button type="submit">ログイン</button>
+    </form>
+</div>
+{% endblock %}

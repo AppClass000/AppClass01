@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{{ user_name }}の時間割</title>
+        <style>
+            table { width: 100%; border-collapse: collapse; }
+        td, th { border: 1px solid #ccc; text-align: center; padding: 10px; }
+        .time-slot { height: 100px; }
+        </style>
+        <link rel="stylesheet" href="/static/schedule.css">
+    </head>
+    <body>
+        <h1>{{ user_name }}の時間割</h1>
+        <table>
+           <thead>
+            <tr>
+                <th>時間</th>
+                <th>月曜日</th>
+                <th>火曜日</th>
+                <th>水曜日</th>
+                <th>木曜日</th>
+                <th>金曜日</th>
+            </tr>
+           </thead>
+           <tbody>
+            <tr>
+                <td>1 (8:50 - 10:30)</td>
+                <td id="mon-1" class="time-slot" name="月1">{{ get_class.get('月1','') }}</td>
+                <td id="the-1" class="time-slot" name="火1">{{ get_class.get('火1','') }}</td>
+                <td id="web-1" class="time-slot" name="水1">{{ get_class.get('水1','') }}</td>
+                <td id="thu-1" class="time-slot" name="木1">{{ get_class.get('木1','') }}</td>
+                <td id="fri-1" class="time-slot" name="金1">{{ get_class.get('金1','') }}</td>
+            </tr>
+            <tr> 
+                <td>2 (10:40 - 12:00)</td>  
+                <td id="mon-2" class="time-slot" name="月2">{{ get_class.get('','') }}</td>,
+                <td id="the-2" class="time-slot" name="火2">{{ get_class.get('火2','') }}</td>
+                <td id="web-2" class="time-slot" name="水2">{{ get_class.get('水2','') }}</td>
+                <td id="thu-2" class="time-slot" name="木2">{{ get_class.get('','') }}</td>
+                <td id="fri-2" class="time-slot" name="金2">{{ get_class.get('','') }}</td>
+            </tr>  
+            <tr>  
+                <td>3 (13:00 - 14:30)</td> 
+                <td id="mon-3" class="time-slot" name="月3">{{ get_class.get('','') }}</td>
+                <td id="the-3" class="time-slot" name="火3">{{ get_class.get('','') }}</td>
+                <td id="web-3" class="time-slot" name="水3">{{ get_class.get('','') }}</td>
+                <td id="thu-3" class="time-slot" name="木3">{{ get_class.get('','') }}</td>
+                <td id="fri-3" class="time-slot" name="金3">{{ get_class.get('金3','') }}</td>
+            </tr> 
+            <tr> 
+                <td>4 (14:40 - 16:10)</td> 
+                <td id="mon-4" class="time-slot" name="月4">{{ get_class.get('','') }}</td>
+                <td id="the-4" class="time-slot" name="火4">{{ get_class.get('','') }}</td>
+                <td id="web-4" class="time-slot" name="水4">{{ get_class.get('','') }}</td>
+                <td id="thu-4" class="time-slot" name="木4">{{ get_class.get('','') }}</td>
+                <td id="fri-4" class="time-slot" name="金4">{{ get_class.get('','') }}</td>
+            </tr> 
+            <tr> 
+                <td>5 (16:20 - 17:50)</td> 
+                <td id="mon-5" class="time-slot" name="月5">{{ get_class.get('','') }}</td>
+                <td id="the-5" class="time-slot" name="火5">{{ get_class.get('','') }}</td>
+                <td id="web-5" class="time-slot" name="水5">{{ get_class.get('','') }}</td>
+                <td id="thu-5" class="time-slot" name="木5">{{ get_class.get('','') }}</td>
+                <td id="fri-5" class="time-slot" name="金5">{{ get_class.get('','') }}</td>
+            </tr> 
+           </tbody> 
+ 
+        </table> 
+    <div class="back-btn"><a href="classlist.html">授業一覧</a></div> 
+    <script src="/static/schedule.js"></script> 
+    </body> 
+

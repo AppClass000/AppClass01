@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+  <div class="container">
+    <h1>お名前を入力してください</h1>
+    <form  method="post" action="/classlist.html" class="selectinfo">
+       <input type="text" name="user_name" >
+     <h2>学部・学科を選択してください</h2>
+             <select name="faculty" id="faculty" onchange="updateDepartments()">
+                 <option value="地域教育文化学部" >地域教育文化学部</option>
+                 <option value="人文社会科学部">人文社会科学部</option>
+                 <option value="理学部">理学部</option>
+                 <option value="工学部">工学部</option>
+                 <option value="農学部">農学部</option>
+                 <option value="医学部">医学部</option>
+             </select>
+         
+             学科:
+             <select name="department" id="department"></select>
+         <button type="submit">授業一覧へ</button>
+     </form>
+    </div>
+    <script src="/static/infoform.js"></script>
+{% endblock %}
