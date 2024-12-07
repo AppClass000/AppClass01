@@ -1,28 +1,47 @@
 package models
 
 import (
-	
-	
-	"gorm.io/driver/mysql"
+	"errors"
+	"fmt"
+	"time"
+
+	"golang.org/x/crypto/bcrypt"
+	"gorm.io/gorm"
 )
 
 
 type Users struct {
-	id uint "gorm:primarykey"
-	name string 
-	email string
-	password string
+	Id uint `"gorm:primarykey"`
+	Name string `"gorm:not null"`
+	Email string `"gorm:unique;not null"`
+	Password string `"gorm:not null"`
 	CreatedAt time.Time
 	UpdatedAt time.Time
 }
 
-func users() {
-	dsn := "root:sk3316624@tcp(127.0.0.1:3306)/appclass?charset=utf8mb4&parseTime=True&loc=Local"
-	db, err = gorm.Open(mysql.Open(dsn), &gorm.Config{})
-    if err != nil {
-		log.fatal("データベース接続error:",err)
-	}
 
-	newUser := Users{name:"kaito"}
-	
+func (u *Users) VerifyPassword(password string) error {
+	return bcrypt.CompareHashAndPassword([]byte(u.Password),[]byte(password))
+}
+
+
+func FindEmailUser (db *gorm.DB,email string) (*Users,error) {
+	var user Users
+	if err := db.Where("email=?",email).First(&user).Error; err != nil {
+		return nil,err
+	}
+	return &user,nil
+}
+
+func CreateUser(db *gorm.DB,user *Users) error {
+	hashed, err := bcrypt.GenerateFromPassword([]byte(user.Password),bcrypt.DefaultCost)
+	if err != nil {
+		return errors.New("ハッシュ化失敗")
+	}
+	user.Password = string(hashed)
+
+	if err := db.Create(user).Error; err != nil {
+		return fmt.Errorf("ユーザー作成エラー:%w",err)
+	}
+	return nil
 }

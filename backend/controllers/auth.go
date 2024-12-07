@@ -8,16 +8,16 @@ import (
 	"github.com/gin-gonic/gin"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
-	"golang.org/x/crypto/bycpt"
+	"golang.org/x/crypto/bcrypt"
 )
 
  
 
 type Users struct {
-	id uint `"gorm:primarykey" "json:id"`
-	name string  `"gorm:not null" "json:name" "binding:required"`
-	email string `"gorm:unique; not null" "json:email" "binding:required,email"`
-	password string `"gorm:not null" "json:password" "binding:required"`
+	Id uint `"gorm:primarykey" "json:id"`
+	Name string  `"gorm:not null" "json:name" "binding:required"`
+	Email string `"gorm:unique; not null" "json:email" "binding:required,email"`
+	Password string `"gorm:not null" "json:password" "binding:required"`
 	CreatedAt time.Time 
 	UpdatedAt time.Time
 }
@@ -46,15 +46,15 @@ func Register(c *gin.Context) {
 		return
 	}
 
-	hashedPassword, err := hashPassword(input.password)
+	hashedPassword, err := hashPassword(input.Password)
 	if err != nil {
 		log.Fatalf("パスワード暗号化error",err)
 	}
 
 	newUser :=Users{
-		name: input.name,
-		email: input.email,
-		password: hashedPassword,
+		Name: input.Name,
+		Email: input.Email,
+		Password: hashedPassword,
         }
 
 	if err := db.Create(&newUser).Error ; err != nil {
