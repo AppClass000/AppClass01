@@ -1,0 +1,70 @@
+.App {
+  width: 100%;
+  height:10vh;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+}
+
+.Side-bar {
+  top: 20px;
+  height: 100%;
+  width:  250px;
+  background-color: rgb(26, 155, 235);
+
+}
+
+.Header {
+  position: fixed;
+  width: 50%;
+  color:#3399ff;
+  margin-left: 42%;
+  margin-right: auto;
+  font-size: 20px;
+  text-align: center;
+  border: #ffffff;
+  display: flex;
+
+}
+
+.Sidebar-list {
+  height: auto;
+  padding: o;
+  width: 100%;
+  
+
+}
+
+.Sidebar-list .row {
+  height: 50px;
+  width: 100%;
+  background-color: #55a9fc;
+  display: flex;
+  color:rgb(255, 255, 255);
+  justify-content: center;
+  align-items: center;
+  border: 0.5px solid white;
+
+
+
+}
+
+.Sidebar-list .row:hover {
+  cursor: pointer;
+  background-color: #3399ff;
+}
+
+.row #icon {
+  flex:30%;
+  display: grid;
+  place-items: center;
+
+}
+
+.row #title {
+  flex:70%;
+}
